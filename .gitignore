@@ -1,0 +1,9 @@
+# .gitignore
+# Purpose: Exclude files and directories from version control
+# Author: Merlin
+# Version: 1.0
+# Changes: Initial version
+
+node_modules/
+dist/
+.env

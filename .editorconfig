@@ -1,0 +1,18 @@
+# EditorConfig helps maintain consistent coding styles
+# Author: Merlin
+# Version: 1.0
+# Changes: Initial version
+
+# Ensures this is the top-level `.editorconfig` file and overrides any parent configurations
+root = true
+# Applies the following rules to all files
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+# Ensures files are saved with UTF-8 encoding
+charset = utf-8
+trim_trailing_whitespace = true
+# Ensures a newline is added at the end of each file
+insert_final_newline = true
+insert_final_newline = true

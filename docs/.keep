@@ -1,0 +1,186 @@
+<!--
+File: docs/Software_Development_Design_Document.md
+Purpose: Template for documenting software design decisions and architecture.
+Version: 1.0.0
+Author: Matt Tolleson
+Last Updated: 2025-21-05
+-->
+## Dev Ops
+
+### Automated CHANGELOG.md Management
+
+To streamline release management, the project uses automation to update `CHANGELOG.md` on every significant change. This is achieved through CI/CD workflows that detect commits following [Conventional Commits](https://www.conventionalcommits.org/) and trigger scripts to append or update release notes. This ensures that the changelog remains accurate and up-to-date without manual intervention.
+
+### Automatic Versioning
+
+The project employs automatic semantic versioning using tools like [semantic-release](https://semantic-release.gitbook.io/semantic-release/) or custom scripts. These tools analyze commit messages to determine if a major, minor, or patch version bump is required, then update version numbers across relevant files (e.g., `package.json`, documentation headers) and create a new release tag.
+
+#### Project Global Semantic Versioning
+
+A global version is maintained for the entire project, ensuring consistency across all modules and scripts. The version is stored in a central configuration file (e.g., `.version` or `package.json`) and referenced by scripts and CI/CD pipelines to enforce uniformity.
+
+### Architecture Overview
+
+```mermaid
+flowchart TD
+    A[Developer Commit] --> B[CI/CD Workflow]
+    B --> C[Analyze Commit Messages]
+    C --> D[Update Version Numbers]
+    D --> E[Update CHANGELOG.md]
+    E --> F[Push Changes & Create Release]
+    F --> G[Notify Stakeholders]
+```
+
+- **Settings:** Versioning and changelog automation are configured in `.github/workflows/release.yml` and project settings files.
+- **Scripts:** New scripts in the `scripts/` directory handle version bumping, changelog generation, and release tagging.
+- **Extensibility:** The architecture allows easy integration of additional automation tasks as the project grows.
+
+This Dev Ops setup ensures reliable, transparent, and maintainable release processes for Script Vault.
+
+# Software Development Design Document
+
+## 1. Project Overview
+
+**Project Name:**  Script Vault
+**Description:**  This Project :L The Script Vault is a listing of important development and otherwise handy scriupts.
+**Author(s):**  Matt Tiolleson
+**Date:**  2025-21-06
+**Version:**  1.0.0
+
+---
+
+## 2. Table of Contents
+
+1. [Project Overview](#1-project-overview)
+2. [Table of Contents](#2-table-of-contents)
+3. [Goals and Objectives](#3-goals-and-objectives)
+4. [Stakeholders](#4-stakeholders)
+5. [Requirements](#5-requirements)
+6. [Architecture Overview](#6-architecture-overview)
+7. [Design Patterns Used](#7-design-patterns-used)
+8. [System Components](#8-system-components)
+9. [Data Model](#9-data-model)
+10. [API Design](#10-api-design)
+11. [User Interface Design](#11-user-interface-design)
+12. [Security Considerations](#12-security-considerations)
+13. [Testing Strategy](#13-testing-strategy)
+14. [Deployment Plan](#14-deployment-plan)
+15. [Risks and Mitigations](#15-risks-and-mitigations)
+16. [Appendix](#16-appendix)
+
+---
+
+## 3. Goals and Objectives
+
+- Provide a series of Scripts for software development
+- Our first goal should be scripts in each catagory of development, Command line, Env setup, Implemtnations, Netwoerking, Deploy, version control..
+
+---
+
+## 4. Stakeholders
+
+| Name         | Role           | Contact Info      |
+|--------------|----------------|------------------|
+|              |                |                  |
+
+---
+
+## 5. Requirements
+
+### 5.1 Functional Requirements
+
+- Requirement 1
+- Requirement 2
+
+### 5.2 Non-Functional Requirements
+
+- Performance
+- Scalability
+- Security
+
+---
+
+## 6. Architecture Overview
+
+- High-level architecture diagram (attach or link)
+- Description of chosen architecture (e.g., MVC, microservices, etc.)
+- Rationale for architecture decisions
+
+---
+
+## 7. Design Patterns Used
+
+- List and briefly describe design patterns (e.g., Singleton, Factory, Observer)
+- Explain why each pattern was chosen
+
+---
+
+## 8. System Components
+
+| Component Name | Description | Responsibilities |
+|----------------|-------------|------------------|
+|                |             |                  |
+
+---
+
+## 9. Data Model
+
+- ER diagrams or class diagrams
+- Description of main entities and relationships
+
+---
+
+## 10. API Design
+
+- List of endpoints, methods, and sample requests/responses
+- Authentication and authorization details
+
+---
+
+## 11. User Interface Design
+
+- Wireframes or mockups
+- Description of main UI components
+
+---
+
+## 12. Security Considerations
+
+- Authentication/authorization
+- Data protection
+- Threat modeling
+
+---
+
+## 13. Testing Strategy
+
+- Unit testing
+- Integration testing
+- End-to-end testing
+
+---
+
+## 14. Deployment Plan
+
+- Environments (dev, staging, prod)
+- CI/CD pipeline overview
+
+---
+
+## 15. Risks and Mitigations
+
+| Risk           | Likelihood | Impact | Mitigation Strategy |
+|----------------|------------|--------|---------------------|
+|                |            |        |                     |
+
+---
+
+## 16. Appendix
+
+- References
+- Glossary
+- Additional diagrams
+
+---
+
+*This document is based on best practices and templates from open-source projects on GitHub.*

@@ -1,0 +1,36 @@
+{
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": ".*",
+                "cmd": "node .github/scripts/update-changelog.js ${file}"
+            }
+            
+        ]
+
+    },
+
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#6345f5",
+        "activityBar.background": "#4e70ad",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#e8d6dd",
+        "activityBarBadge.foreground": "#13212f",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#8094b7",
+        "statusBar.background": "#6079a4",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#889aba",
+        "statusBarItem.remoteBackground": "#6079a4",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#6079a4",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#6079a499",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "workbench.iconTheme": "fluent-icons",
+    "workbench.preferredLightColorTheme": "Peacock",
+    "workbench.preferredDarkColorTheme": "Peacock",
+    "peacock.color": "#6079a4"
+}

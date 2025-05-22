@@ -1,0 +1,101 @@
+name: CI
+
+# On every commit, check all changed files, bump version, update CHANGELOG.md, and commit changes
+# Uses github-script and standard-version for versioning and changelog
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Needed for versioning and changelog
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint
+        run: npx eslint .
+
+      - name: Run tests
+        run: echo "No tests yet"
+
+  version-and-changelog:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+
+      - name: Determine version bump
+        id: version-bump
+        run: |
+          # Default to patch
+          bump="patch"
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            if [[ "$file" == *"BREAKING_CHANGE"* ]]; then
+              bump="major"
+              break
+            elif [[ "$file" == *".feature"* ]]; then
+              bump="minor"
+            fi
+          done
+          echo "bump=$bump" >> $GITHUB_OUTPUT
+
+      - name: Bump version and update changelog
+        run: |
+          npx standard-version --release-as ${{ steps.version-bump.outputs.bump }} --skip.tag=true --skip.commit=true
+
+      - name: Update CHANGELOG.md with commit messages for changed files
+        run: |
+          echo "### Changes in this commit:" > .changelog_temp.md
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "- $file: $(git log -1 --pretty=format:"%s" -- $file)" >> .changelog_temp.md
+          done
+          cat .changelog_temp.md >> CHANGELOG.md
+          rm .changelog_temp.md
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(release): bump version and update CHANGELOG.md [skip ci]"
+          file_pattern: 'package.json CHANGELOG.md'
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npx eslint .
+      - name: Run tests
+        run: echo "No tests yet"
