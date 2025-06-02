@@ -27,8 +27,8 @@ To create a development environment template that generates a VSCode workspace.
 14. Add a .env file to store environment variables.
 15. Add a .env.example file to provide an example of the environment variables needed for the project.
 16. Add a .github directory with issue templates and pull request templates and a workflow file for CI/CD (e.g., GitHub Actions) to automate testing and deployment and a FEATURE_REQUESTS.md file to document feature requests and a CONTRIBUTING.md file to guide contributors on how to contribute to the project.
-17. Add a CHANGELOG.md file to document changes and updates to the project.
-18. Create a docs folder at the project root to store documentation files if not created.
+17. Add a CHANGELOG.md file to document changes and updates to the project. Update it with changes as the project evolves.
+18. Create a docs folder at the project root to store documentation files if not created. Keep the documentation up to date with the project changes and updates.
 19. Create a tests folder at the project root to store test files if not created.
 20. Create a src folder at the project root to store source files if not created.
 21. Create a dist folder at the project root to store distribution files if not created.
@@ -52,3 +52,13 @@ To create a development environment template that generates a VSCode workspace.
 - Use the latest and most relevant tools and libraries.
 - Use the latest and most relevant design patterns and architectures.
 - Focus on design patterns and take the time to explain them.
+- Use the latest and most relevant DevOps practices and tools.
+- Use the latest and most relevant security practices and tools.
+- Use the latest and most relevant testing practices and tools.
+- Use the latest and most relevant deployment practices and tools.
+- Use the latest and most relevant performance optimization practices and tools.
+- Use the latest and most relevant accessibility practices and tools.
+- When there is an opportunity to use a design pattern, explain it in detail and provide an example of how to implement it.
+- Let the user know when outdated UI frameworks or libraries are used and suggest alternatives.
+- Always make the user aware of oppertunities to improve the project structure, organization, and maintainability.
+- Always make the user aware of opperunities to take an existing file and refactor it to use a design pattern.
